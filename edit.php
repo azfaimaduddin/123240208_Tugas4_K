@@ -3,7 +3,6 @@ include 'components/components.php';
 include 'config/koneksi.php';
 include 'components/session_protected.php';
 
-// Validasi parameter URL
 if(!isset($_GET['id_peserta']) || !isset($_GET['id_tim'])){
     header("Location: index.php");
     exit;
@@ -16,7 +15,6 @@ $id_tim = $_GET['id_tim'];
 $query_peserta = mysqli_query($koneksi, "SELECT * FROM peserta WHERE id_peserta = $id_peserta");
 $peserta = mysqli_fetch_assoc($query_peserta);
 
-// Security Check: Jika yang mau edit bukan pemiliknya, tendang
 if($_SESSION['id_user'] != $peserta['id_user']){
     header("Location: pendaftaran.php?id_tim=$id_tim"); // Redirect balik
     exit;
@@ -88,4 +86,5 @@ $tim = mysqli_fetch_assoc(mysqli_query($koneksi, "SELECT * FROM tim WHERE id_tim
   
   <?php footer() ?>
 </body>
+
 </html>
