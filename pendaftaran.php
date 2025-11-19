@@ -3,7 +3,6 @@ include 'components/components.php';
 include 'config/koneksi.php';
 include 'components/session_protected.php';
 
-// Menangani jika id_tim tidak ada
 if(!isset($_POST['id_tim']) && !isset($_GET['id_tim'])){
     header("Location: index.php");
     exit;
@@ -127,4 +126,5 @@ $data_peserta = mysqli_query($koneksi, "SELECT * FROM peserta WHERE id_tim = $id
 
   <?php footer() ?>
 </body>
+
 </html>
